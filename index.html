@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Навчальний приклад персональної сторінки викладача університету">
+  <title>Персональна сторінка викладача</title>
+  <style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f7fa;color:#253347;font-family:Arial,sans-serif;line-height:1.5}
+header{background:#18375c;color:white}.top{padding:16px 3%;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.brand{font-size:21px;font-weight:700}nav{display:flex;gap:27px;flex-wrap:wrap}nav a{font-size:17px;color:white;text-decoration:none}nav a:hover{text-decoration:underline}
+main{max-width:1600px;margin:auto;padding:42px 5%}.profile{background:white;border:1px solid #d9e2ec;border-radius:12px;min-height:237px;padding:33px 45px;display:flex;gap:32px;margin:0 2% 58px;box-shadow:0 3px 15px #1b34550b}.portrait{width:202px;height:170px;flex:none;background:#eef4fa;border:2px dashed #a9bed1;border-radius:10px;position:relative;display:grid;place-items:center;text-align:center;overflow:hidden}.portrait:before{content:'Місце для фотографії';font-size:15px;color:#58718b;padding:15px}.profile h1{font-size:32px;color:#18375c;margin:-9px 0 4px}.position{font-size:20px;color:#2865a0;font-weight:600;margin:0 0 12px}.profile p{margin:3px 0;font-size:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5.5%;margin-bottom:58px}.grid2{display:grid;grid-template-columns:1fr 1.28fr;gap:10%;margin:0 1% 35px}section.panel{background:white;border:1px solid #d9e2ec;border-radius:12px;min-width:0;min-height:192px;overflow:hidden;box-shadow:0 3px 15px #1b34550b}section.panel h2{font-size:20px;color:#18375c;font-weight:700;margin:0;border-bottom:1px solid #d9e2ec;padding:14px 16px}section.panel>ul,section.panel>p,section.panel>.notice{margin:12px 16px}section.panel ul{padding-left:22px}section.panel li{margin:6px 0}.files{list-style:none;padding:0!important}.files li{border-bottom:1px solid #d9e2ec;padding:5px 0}.files span{display:block;color:#61738a;font-size:12px}.table-wrap{padding:8px;overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}th,td{border:1px solid #d9e2ec;padding:7px 5px;text-align:left}th{background:#eef4fa;color:#18375c;font-weight:600}tbody tr:nth-child(odd){background:#f5f7fa}.notice{border-bottom:1px solid #d9e2ec;padding:5px 0}.date{font-size:12px;color:#61738a}a{color:#145c9a}@media(max-width:800px){main{padding:24px 16px}.profile{margin:0 0 24px;padding:20px;flex-direction:column}.grid3,.grid2{grid-template-columns:1fr;gap:20px;margin:0 0 20px}nav{gap:12px}nav a{font-size:15px}}
+
+/* DOM navigator */
+#dom-explorer{position:fixed;inset:0;z-index:9999;background:#0c1c32a8;display:flex;align-items:center;justify-content:center;padding:18px}
+#dom-explorer[hidden]{display:none}#dom-dialog{width:min(510px,100%);background:white;color:#253347;border-radius:14px;padding:26px;box-shadow:0 18px 65px #081e3b55;font-family:Arial,sans-serif}
+#dom-dialog h2{margin:0 0 10px;font-size:23px;color:#18375c}#dom-dialog p{margin:8px 0}#dom-current{background:#eef4fa;border:1px solid #d9e2ec;border-radius:9px;padding:14px;overflow-wrap:anywhere}#dom-current code{color:#145c9a;font-size:18px;font-weight:bold}#dom-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}#dom-buttons button,#dom-launch{border:0;border-radius:8px;padding:11px 15px;background:#2865a0;color:white;cursor:pointer;font-size:14px}#dom-buttons button:disabled{opacity:.4;cursor:not-allowed}#dom-buttons button:last-child{background:#61738a}#dom-launch{position:fixed;right:18px;bottom:18px;z-index:9998;box-shadow:0 3px 12px #0002}#dom-count{font-size:13px;color:#61738a}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand">Персональна сторінка викладача</div><nav aria-label="Головне меню"><a href="#home">Головна</a><a href="#subjects">Дисципліни</a><a href="#materials">Матеріали</a><a href="#schedule">Розклад</a><a href="#science">Наука</a><a href="#teacher-contacts">Контакти</a></nav></div></header>
+<main id="home">
+  <section id="teacher-contacts" class="profile" aria-labelledby="teacher-name"><div class="portrait" role="img" aria-label="Місце для фотографії викладача"></div><div><h1 id="teacher-name">Ім'я викладача</h1><p class="position">Посада</p><p><strong>Мобільний:</strong></p><p><strong>Кабінет:</strong></p><p><strong>Електронна пошта:</strong></p></div></section>
+  <div class="grid3">
+    <section class="panel" id="subjects"><h2>Дисципліни</h2></section>
+    <section class="panel" id="materials"><h2>Навчальні матеріали</h2></section>
+    <section class="panel" id="schedule"><h2>Розклад занять</h2><div class="table-wrap"><table><thead><tr><th>День</th><th>Час</th><th>Дисципліна</th><th>Аудиторія</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table></div></section>
+  </div>
+  <div class="grid2">
+    <section class="panel" id="science"><h2>Наукова діяльність</h2></section>
+    <section class="panel" id="announcements"><h2>Оголошення</h2></section>
+  </div>
+</main>
+
+<button id="dom-launch" type="button" hidden>Відкрити DOM-навігатор</button>
+<div id="dom-explorer" role="dialog" aria-modal="true" aria-labelledby="dom-title" hidden>
+  <div id="dom-dialog">
+    <h2 id="dom-title">Навігація DOM-деревом</h2>
+    <p id="dom-count"></p>
+    <div id="dom-current" aria-live="polite"></div>
+    <p id="dom-question">Перейти до наступного вузла чи завершити роботу?</p>
+    <div id="dom-buttons">
+      <button type="button" id="dom-prev">Назад</button>
+      <button type="button" id="dom-next">Наступний вузол</button>
+      <button type="button" id="dom-exit">Завершити</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  'use strict';
+  const explorer = document.getElementById('dom-explorer');
+  const launch = document.getElementById('dom-launch');
+  const current = document.getElementById('dom-current');
+  const counter = document.getElementById('dom-count');
+  const question = document.getElementById('dom-question');
+  const prev = document.getElementById('dom-prev');
+  const next = document.getElementById('dom-next');
+  const exit = document.getElementById('dom-exit');
+  const nodes = [];
+
+  function walkDOM(element, callback) {
+    if (element.nodeType !== Node.ELEMENT_NODE) return;
+    if (element.closest && (element.closest('#dom-explorer') || element.closest('#dom-launch'))) return;
+    if (['SCRIPT', 'STYLE'].includes(element.tagName)) return;
+    callback(element);
+    for (const child of element.children) walkDOM(child, callback);
+  }
+  walkDOM(document.documentElement, function (element) { nodes.push(element); });
+
+  function summary(element) {
+    const ownText = Array.from(element.childNodes)
+      .filter(n => n.nodeType === Node.TEXT_NODE)
+      .map(n => n.textContent.trim()).filter(Boolean).join(' ');
+    const text = ownText || (element.textContent || '').trim();
+    const firstWord = text.split(/\s+/)[0] || 'без тексту';
+    return {tag: element.tagName.toLowerCase(), word: firstWord.length > 32 ? firstWord.slice(0,32) + '…' : firstWord};
+  }
+  let index = 0;
+  function showNode() {
+    const node = summary(nodes[index]);
+    current.replaceChildren();
+    const tag = document.createElement('code');
+    tag.textContent = '<' + node.tag + '>';
+    const desc = document.createElement('p');
+    desc.textContent = 'Вміст: ' + node.word + (node.word === 'без тексту' ? '' : '…');
+    current.append(tag, desc);
+    counter.textContent = 'Вузол ' + (index + 1) + ' із ' + nodes.length;
+    question.textContent = index === 0
+      ? 'Перейти до наступного вузла чи завершити роботу?'
+      : 'Пройти далі, повернутися назад чи завершити роботу?';
+    prev.disabled = index === 0;
+    next.disabled = index === nodes.length - 1;
+    if (next.disabled) question.textContent = 'Це останній вузол. Повернутися назад чи завершити роботу?';
+  }
+  function start() { index = 0; showNode(); explorer.hidden = false; launch.hidden = true; next.focus(); }
+  function finish() { explorer.hidden = true; launch.hidden = false; launch.focus(); }
+  next.addEventListener('click', function () { if (index < nodes.length - 1) { index++; showNode(); } });
+  prev.addEventListener('click', function () { if (index > 0) { index--; showNode(); } });
+  exit.addEventListener('click', finish);
+  launch.addEventListener('click', start);
+  start();
+})();
+</script>
+</body>
+</html>
